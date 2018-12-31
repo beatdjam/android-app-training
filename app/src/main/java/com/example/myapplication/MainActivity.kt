@@ -11,9 +11,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button.setOnClickListener {
-            val intent = Intent(this, NextActivity::class.java)
-            intent.putExtra("INPUT_DATA", editText.text.toString())
-            startActivity(intent)
+            if (editText.text.toString() == "") {
+                editText.error = "Input some value!!"
+            } else {
+                val intent = Intent(this, NextActivity::class.java)
+                intent.putExtra("INPUT_DATA", editText.text.toString())
+                startActivity(intent)
+            }
         }
     }
 }
